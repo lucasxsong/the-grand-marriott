@@ -50,8 +50,9 @@ VALUES
 --       // ...
 --       // ...
 --    }//end bookRoom
-INSERT INTO Booking( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price)
-VALUES
+INSERT INTO Booking
+    ( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price)
+VALUES 
     ( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price);
 
 --    public static void assignHouseCleaningToRoom(DBProject esql){
@@ -60,6 +61,8 @@ VALUES
 --       // ...
 --       // ...
 --    }//end assignHouseCleaningToRoom
+INSERT INTO Assigned(asgID, staffId, hotelID, roomNo)
+VALUES Assigned(asgID, staffId, hotelID, roomNo);
    
 --    public static void repairRequest(DBProject esql){
 -- 	  // Given a hotelID, Staff SSN, roomNo, repairID , date create a repair request in the DB
@@ -67,6 +70,8 @@ VALUES
 --       // ...
 --       // ...
 --    }//end repairRequest
+INSERT INTO Repair(rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
+VALUES Repair(rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
    
 --    public static void numberOfAvailableRooms(DBProject esql){
 -- 	  // Given a hotelID, get the count of rooms available 
