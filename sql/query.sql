@@ -6,9 +6,10 @@
 --       // ...
 --    }//end addCustomer
 
-
-
-
+INSERT INTO Customer
+    (customerID, fName, lName, Address, phNo, DOB, gender)
+VALUES
+    (customerID, fName, lName, Address, phNo, DOB, gender);
 
 --    public static void addRoom(DBProject esql){
 -- 	  // Given room details add the room in the DB
@@ -17,11 +18,20 @@
 --       // ...
 --    }//end addRoom
 
+INSERT INTO Room
+    (hotelID, roomNo, roomType)
+VALUES
+    (hotelID, roomNo, roomType);
+
 --    public static void addMaintenanceCompany(DBProject esql){
 --       // Given maintenance Company details add the maintenance company in the DB
 --       // ...
 --       // ...
 --    }//end addMaintenanceCompany
+INSERT INTO MaintenanceCompany
+    (cmpID, name, address, isCertified)
+VALUES
+    (cmpID, name, address, isCertified);
 
 --    public static void addRepair(DBProject esql){
 -- 	  // Given repair details add repair in the DB
@@ -29,6 +39,10 @@
 --       // ...
 --       // ...
 --    }//end addRepair
+INSERT INTO Repair
+    (rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
+VALUES
+    (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
 
 --    public static void bookRoom(DBProject esql){
 -- 	  // Given hotelID, roomNo and customer Name create a booking in the DB 
@@ -36,6 +50,9 @@
 --       // ...
 --       // ...
 --    }//end bookRoom
+INSERT INTO Booking( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price)
+VALUES
+    ( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price);
 
 --    public static void assignHouseCleaningToRoom(DBProject esql){
 -- 	  // Given Staff SSN, HotelID, roomNo Assign the staff to the room 
