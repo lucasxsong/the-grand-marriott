@@ -1,7 +1,8 @@
 
-#			CS 166 Databases Project phase 3
+# CS 166 Databases Project phase 3
 
 ## to do
+
 [] write sql queries for 15 given queries
 [] paste queries into java functions
 [] create gui for java
