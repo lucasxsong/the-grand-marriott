@@ -79,7 +79,11 @@ VALUES (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
 --       // ...
 --       // ...
 --    }//end numberOfAvailableRooms
-FROM R
+SELECT COUNT(*)
+FROM Room R
+WHERE R.roomNo NOT IN (SELECT B.roomNo
+                       FROM Booking B
+                       WHERE R.hotelID = B.hotelID);
    
 --    public static void numberOfBookedRooms(DBProject esql){
 -- 	  // Given a hotelID, get the count of rooms booked
@@ -87,6 +91,11 @@ FROM R
 --       // ...
 --       // ...
 --    }//end numberOfBookedRooms
+hotelID = USER_ENTERED
+
+SELECT COUNT(*)
+FROM Booking B
+WHERE hotelID = B.hotelID;
    
 --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
 -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
@@ -94,6 +103,11 @@ FROM R
 --       // ...
 --       // ...
 --    }//end listHotelRoomBookingsForAWeek
+** DATE **
+** TODO **
+
+SELECT 
+FROM 
    
 --    public static void topKHighestRoomPriceForADateRange(DBProject esql){
 -- 	  // List Top K Rooms with the highest price for a given date range
@@ -101,13 +115,24 @@ FROM R
 --       // ...
 --       // ...
 --    }//end topKHighestRoomPriceForADateRange
-   
+** DATE **
+** TODO **
+
+SELECT MAX(we) LIMIT k
+
 --    public static void topKHighestPriceBookingsForACustomer(DBProject esql){
 -- 	  // Given a customer Name, List Top K highest booking price for a customer 
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end topKHighestPriceBookingsForACustomer
+k = user_defined 
+
+SELECT B.price 
+FROM Booking B, Customer C
+LIMIT k
+WHERE cname = C.name AND B.customer = C.customerID 
+ORDER BY B.price DESC;
    
 --    public static void totalCostForCustomer(DBProject esql){
 -- 	  // Given a hotelID, customer Name and date range get the total cost incurred by the customer
@@ -115,6 +140,7 @@ FROM R
 --       // ...
 --       // ...
 --    }//end totalCostForCustomer
+** TODO **
    
 --    public static void listRepairsMade(DBProject esql){
 -- 	  // Given a Maintenance company name list all the repairs along with repairType, hotelID and roomNo
@@ -122,13 +148,23 @@ FROM R
 --       // ...
 --       // ...
 --    }//end listRepairsMade
-   
+compName = USER_ENTERED
+
+SELECT R.repairType, R.hotelID, R.roomNo
+FROM Repair R, Maintenance M
+WHERE R.mcompany = M.cmpID AND M.name = compName;
+
 --    public static void topKMaintenanceCompany(DBProject esql){
 -- 	  // List Top K Maintenance Company Names based on total repair count (descending order)
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end topKMaintenanceCompany
+** TODO **
+
+SELECT M.name, COUNT(*)
+FROM MaintenanceCompany M, 
+GROUP BY M
    
 --    public static void numberOfRepairsForEachRoomPerYear(DBProject esql){
 -- 	  // Given a hotelID, roomNo, get the count of repairs per year
@@ -136,3 +172,9 @@ FROM R
 --       // ...
 --       // ...
 --    }//end listRepairsMade
+** TODO **
+
+SELECT COUNT(*)
+FROM Repair R
+WHERE 
+GROUP BY
