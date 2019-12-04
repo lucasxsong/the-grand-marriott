@@ -52,7 +52,7 @@ VALUES
 --    }//end bookRoom
 INSERT INTO Booking
     ( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price)
-VALUES 
+VALUES
     ( bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price);
 
 --    public static void assignHouseCleaningToRoom(DBProject esql){
@@ -61,18 +61,22 @@ VALUES
 --       // ...
 --       // ...
 --    }//end assignHouseCleaningToRoom
-INSERT INTO Assigned(asgID, staffId, hotelID, roomNo)
-VALUES (asgID, staffId, hotelID, roomNo);
-   
+INSERT INTO Assigned
+    (asgID, staffId, hotelID, roomNo)
+VALUES
+    (asgID, staffId, hotelID, roomNo);
+
 --    public static void repairRequest(DBProject esql){
 -- 	  // Given a hotelID, Staff SSN, roomNo, repairID , date create a repair request in the DB
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end repairRequest
-INSERT INTO Repair(rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
-VALUES (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
-   
+INSERT INTO Repair
+    (rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
+VALUES
+    (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
+
 --    public static void numberOfAvailableRooms(DBProject esql){
 -- 	  // Given a hotelID, get the count of rooms available 
 --       // Your code goes here.
@@ -82,9 +86,9 @@ VALUES (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
 SELECT COUNT(*)
 FROM Room R
 WHERE R.roomNo NOT IN (SELECT B.roomNo
-                       FROM Booking B
-                       WHERE R.hotelID = B.hotelID);
-   
+FROM Booking B
+WHERE R.hotelID = B.hotelID);
+
 --    public static void numberOfBookedRooms(DBProject esql){
 -- 	  // Given a hotelID, get the count of rooms booked
 --       // Your code goes here.
@@ -96,7 +100,7 @@ hotelID = USER_ENTERED
 SELECT COUNT(*)
 FROM Booking B
 WHERE hotelID = B.hotelID;
-   
+
 --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
 -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
 --       // Your code goes here.
@@ -104,21 +108,25 @@ WHERE hotelID = B.hotelID;
 --       // ...
 --    }//end listHotelRoomBookingsForAWeek
 ** DATE **
-** TODO **
 
-SELECT 
-FROM 
-   
+SELECT R.roomNo, R.roomType
+FROM Room R
+WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+    FROM Booking B
+    WHERE R.hotelID = B.hotelID AND B.bookingDate = date OR B.bookingDate = date1 OR B.bookingDate = date2 OR B.bookingDate = date3 OR B.bookingDate = date4 OR B.bookingDate = date5 OR B.bookingDate = date6);
+
 --    public static void topKHighestRoomPriceForADateRange(DBProject esql){
 -- 	  // List Top K Rooms with the highest price for a given date range
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end topKHighestRoomPriceForADateRange
-** DATE **
-** TODO **
 
-SELECT MAX(we) LIMIT k
+SELECT R.roomNo, R.roomType
+FROM Booking B, Room R
+LIMIT k
+WHERE B.roomNo = R.roomNo AND B.bookingDate >= startDate AND B.bookingDate <= endDate
+ORDER BY B.price DESC;
 
 --    public static void topKHighestPriceBookingsForACustomer(DBProject esql){
 -- 	  // Given a customer Name, List Top K highest booking price for a customer 
@@ -126,22 +134,24 @@ SELECT MAX(we) LIMIT k
 --       // ...
 --       // ...
 --    }//end topKHighestPriceBookingsForACustomer
-k = user_defined 
+k = user_defined
 
-SELECT B.price 
+SELECT B.price
 FROM Booking B, Customer C
 LIMIT k
 WHERE cname = C.name AND B.customer = C.customerID 
 ORDER BY B.price DESC;
-   
+
 --    public static void totalCostForCustomer(DBProject esql){
 -- 	  // Given a hotelID, customer Name and date range get the total cost incurred by the customer
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end totalCostForCustomer
-** TODO **
-   
+SELECT sum(B.price)
+FROM Booking B, Room R, Customer C
+WHERE B.hotelID = hotelID AND B.customer = C.customerID AND C.fname = fname AND C.lname = lname AND B.bookingDate >= startDate AND B.bookingDate <= endDate;
+
 --    public static void listRepairsMade(DBProject esql){
 -- 	  // Given a Maintenance company name list all the repairs along with repairType, hotelID and roomNo
 --       // Your code goes here.
@@ -160,21 +170,23 @@ WHERE R.mcompany = M.cmpID AND M.name = compName;
 --       // ...
 --       // ...
 --    }//end topKMaintenanceCompany
-** TODO **
 
-SELECT M.name, COUNT(*)
-FROM MaintenanceCompany M, 
-GROUP BY M
-   
+SELECT M2.name, M.count
+FROM (SELECT R1.id as id, COUNT(*) as count
+        FROM Repair R
+        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+LIMIT k
+WHERE M2.cmpID = M.id
+ORDER BY M.count DESC;
+
 --    public static void numberOfRepairsForEachRoomPerYear(DBProject esql){
 -- 	  // Given a hotelID, roomNo, get the count of repairs per year
 --       // Your code goes here.
 --       // ...
 --       // ...
 --    }//end listRepairsMade
-** TODO **
 
-SELECT COUNT(*)
+SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
 FROM Repair R
-WHERE 
-GROUP BY
+GROUP BY EXTRACT(YEAR FROM R.repairDate)
+WHERE roomNo = R.roomNo AND R.hotelID = hotelID;
