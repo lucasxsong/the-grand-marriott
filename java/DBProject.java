@@ -183,11 +183,12 @@ public class DBProject {
     */
    public static boolean isValidDate(String date) throws Exception {
       try {
-         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+         DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
          df.setLenient(false);
          df.parse(date);
          return true;  
       } catch (ParseException e) {
+         System.out.println("Invalid date format, please try again.");
          return false;
       }
    }
@@ -359,7 +360,7 @@ public class DBProject {
          // Gather customer DOB
          String customerDOB = "";
          while (customerDOB == "" || !isValidDate(customerDOB)) {
-            System.out.print("\tEnter DOB \'YYYY-MM-DD\': ");
+            System.out.print("\tEnter DOB \'MM-DD-YYYY\': ");
             customerDOB = in.readLine();   
          }
          // Gather customer gender
@@ -373,9 +374,9 @@ public class DBProject {
 
          String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
          // Execute query
-
+         esql.executeUpdate(query);
       }catch(Exception e) {
-         
+         System.err.println(e.getMessage());
       }
 	  // Given customer details add the customer in the DB 
       // Your code goes here.
