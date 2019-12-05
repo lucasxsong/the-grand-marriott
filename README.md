@@ -2,8 +2,7 @@
 # CS 166 Databases Project phase 3
 
 ## to do
-
-- [ ] write sql queries for 15 given queries
+- [x] write sql queries for 15 given queries
 
 - [ ] paste queries into java functions
 
