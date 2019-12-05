@@ -37,6 +37,8 @@ public class DBProject {
    static BufferedReader in = new BufferedReader(
                                 new InputStreamReader(System.in));
 
+   static String getNumCustomers = "SELECT COUNT(*) FROM CUSTOMERS;";
+
    /**
     * Creates a new instance of DBProject
     *
@@ -230,6 +232,19 @@ public class DBProject {
          "\n\n*******************************************************\n" +
          "              User Interface      	               \n" +
          "*******************************************************\n");
+      System.out.println(
+         "\n\n*WELCOME TO DATABATES HOTEL\n*" +
+         "               /\\\\  \\\n" +
+         "            __// \\\\  \\____\n" +
+         "          /\\ //   \\\\ /\\   \\\n" +
+         "         //\\\\/ ' ' \\//\\\\   \\\n" +
+         "        // '\\\\ ' ' //  \\\\___\\\n" +
+         "         | ' ' ' ' ' ' |. .|\n" +
+         "         | ' ' ' ' ' ' |. .|\n" +
+         "         | ' ' '_' ' ' |. .|\n" +
+         "         | ' ' / \\ ' ' |. .|\n" +
+         "         |_'_'_|#|_'_'_|_.-'\n"
+      );
    }//end Greeting
 
    /*
@@ -254,6 +269,31 @@ public class DBProject {
 
    
    public static void addCustomer(DBProject esql){
+      try {
+         System.out.print("\tEnter customer's first name: ");
+         String fname = in.readLine();
+         System.out.print("\tEnter customer's last name: ");
+         String lname = in.readLine();
+         System.out.print("\tEnter customer's address :");
+         String address = in.readLine();
+         System.out.print("\tEnter customer's phone number: ");
+         String phoneNum = in.readLine();
+         System.out.print("\tEnter DOB \'YYYY-MM-DD\': ");
+         String customerDOB = in.readLine();
+         System.out.print("\tPlease choose gender (Male, Female, Other): ");
+         String gender = in.readLine();
+         
+         String query = "INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender)";
+         query += "VALUES (\''";
+         // Create new getNum function like executeQuery that only returns the row count and doesn't output to console
+         // Integer newCustomerID = esql.executeQuery(getNumCustomers) + 1; // FIXME newCustomerID should be numrows in customer + 1
+         // query += newCustomerID.toString();
+         query += "\'', \''" + fname + "\'', \''" + lname + "\'', \''" + address + "\'', \''" + phoneNum + "\'', \''" + customerDOB + "\'', \''" + gender + "\');'";
+         
+         int rowCount = esql.executeQuery(query);
+      }catch(Exception e) {
+         
+      }
 	  // Given customer details add the customer in the DB 
       // Your code goes here.
       // ...
