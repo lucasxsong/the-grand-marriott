@@ -72,7 +72,7 @@
 -- --       // ...
 -- --       // ...
 -- --    }//end repairRequest
--- INSERT INTO Repair
+-- INSERT INTO Request
 --     (rID, hotelID, roomNo, mCompany, repairDate, description, repairType)
 -- VALUES
 --     (rID, hotelID, roomNo, mCompany, repairDate, description, repairType);
