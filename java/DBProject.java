@@ -20,10 +20,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.text.DateFormat;  
-import java.text.SimpleDateFormat;  
-import java.util.Date;  
-import java.util.Calendar; 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class defines a simple embedded SQL utility class that is designed to
@@ -298,12 +299,35 @@ public class DBProject {
     }// end main
 
     public static void Greeting() {
-        System.out.println("\n\n*****WELCOME TO DATABATES HOTEL*****\n" + "               /\\\\  \\\n"
-                + "            __// \\\\  \\____\n" + "          /\\ //   \\\\ /\\   \\\n"
-                + "         //\\\\/ ' ' \\//\\\\   \\\n" + "        // '\\\\ ' ' //  \\\\___\\\n"
-                + "         | ' ' ' ' ' ' |. .|\n" + "         | ' ' ' ' ' ' |. .|\n" + "         | ' ' '_' ' ' |. .|\n"
-                + "         | ' ' / \\ ' ' |. .|\n" + "         |_'_'_|#|_'_'_|_.-'\n"
-                + "************************************\n");
+        // System.out.println("\n\n*****WELCOME TO DATABATES HOTEL*****\n" + "               /\\\\  \\\n"
+        //         + "            __// \\\\  \\____\n" + "          /\\ //   \\\\ /\\   \\\n"
+        //         + "         //\\\\/ ' ' \\//\\\\   \\\n" + "        // '\\\\ ' ' //  \\\\___\\\n"
+        //         + "         | ' ' ' ' ' ' |. .|\n" + "         | ' ' ' ' ' ' |. .|\n" + "         | ' ' '_' ' ' |. .|\n"
+        //         + "         | ' ' / \\ ' ' |. .|\n" + "         |_'_'_|#|_'_'_|_.-'\n"
+        //         + "************************************\n");
+            String greet[] ={"*****WELCOME TO DATABATES HOTEL*****" , "               /\\\\  \\"
+            , "            __// \\\\  \\____" , "          /\\ //   \\\\ /\\   \\"
+            , "         //\\\\/ ' ' \\//\\\\   \\" , "        // '\\\\ ' ' //  \\\\___\\"
+            , "         | ' ' ' ' ' ' |. .|" , "         | ' ' ' ' ' ' |. .|" , "         | ' ' '_' ' ' |. .|"
+            , "         | ' ' / \\ ' ' |. .|" , "         |_'_'_|#|_'_'_|_.-'"
+            , "************************************"};
+            for (int i = 0; i < greet.length; ++i ) {
+                try {
+                    Thread.sleep(200);   
+                    System.out.println(greet[i]);
+                }
+                catch (Exception e) {
+
+                }
+                // TimeUnit.SECONDS.sleep(1);
+            }
+            try {
+                Thread.sleep(3000);  
+            }
+            catch (Exception e) {
+                
+            }
+        
     }// end Greeting
 
     /*
@@ -441,25 +465,25 @@ public class DBProject {
             String query = "SELECT R.roomNo, R.roomType FROM Room R WHERE R.hotelID = ";
             System.out.print("\tEnter hotelID: ");
             String input = in.readLine();
-            input = "\'"+input+"\'";
+            input = "\'" + input + "\'";
             query += input;
 
             String query2 = " AND R.roomNo NOT IN (SELECT B.roomNo FROM Booking B WHERE R.hotelID = B.hotelID AND B.bookingDate >= ";
             System.out.print("\tEnter date: ");
             String date = in.readLine();
-            Date date1=new SimpleDateFormat("MM/dd/yyyy").parse(date);  
-            date = "\'"+date+"\'";
+            Date date1 = new SimpleDateFormat("MM/dd/yyyy").parse(date);
+            date = "\'" + date + "\'";
             query += query2;
             query += date;
-            int noOfDays = 7; //i.e two weeks
+            int noOfDays = 7; // i.e two weeks
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(date1);            
+            calendar.setTime(date1);
             calendar.add(Calendar.DAY_OF_YEAR, noOfDays);
             Date dateend = calendar.getTime();
-            DateFormat dateFormat = new SimpleDateFormat("MM-dd-YYYY");  
+            DateFormat dateFormat = new SimpleDateFormat("MM-dd-YYYY");
             String dateendstr = dateFormat.format(dateend);
             dateendstr = "\'" + dateendstr + "\');";
-            
+
             String query3 = " AND B.bookingDate <= ";
             query += query3;
             query += dateendstr;
@@ -487,7 +511,7 @@ public class DBProject {
             query += "ORDER BY B.price DESC LIMIT ";
             System.out.print("\tEnter number of results: ");
             String input3 = in.readLine();
-            input3 =  input3 + ";";
+            input3 = input3 + ";";
             query += input3;
             int rowCount = esql.executeQuery(query);
             System.out.println("total row(s): " + rowCount);
@@ -523,7 +547,7 @@ public class DBProject {
         // the customer
         try {
             String query = "SELECT sum(B.price) FROM Booking B, Room R, Customer C WHERE B.hotelID =  ";
-            
+
             System.out.print("\tEnter Hotel ID: ");
             String input = in.readLine();
             input = "\'" + input + "\' AND B.customer = C.customerID AND C.fname = ";
@@ -543,7 +567,7 @@ public class DBProject {
             String input4 = in.readLine();
             input4 = "\'" + input4 + "\'";
             query += input4 + " AND B.bookingDate <= ";
-            
+
             System.out.print("\tEnter End Date: ");
             String input5 = in.readLine();
             input5 = "\'" + input5 + "\';";
@@ -561,7 +585,7 @@ public class DBProject {
         // hotelID and roomNo
         try {
             String query = "SELECT R.repairType, R.hotelID, R.roomNo FROM Repair R, MaintenanceCompany M WHERE R.mcompany = M.cmpID AND M.name = ";
-            
+
             System.out.print("\tEnter Maintenance Company Name: ");
             String input = in.readLine();
             input = "\'" + input + "\';";
@@ -579,7 +603,7 @@ public class DBProject {
         // order)
         try {
             String query = "SELECT M2.name, M.count FROM (SELECT R1.mCompany as id, COUNT(*) as count FROM Repair R1 GROUP BY R1.mCompany) as M, MaintenanceCompany M2 WHERE M2.cmpID = M.id ORDER BY M.count DESC LIMIT";
-            
+
             System.out.print("\tEnter number of results: ");
             String input = in.readLine();
             input = "\'" + input + "\';";
@@ -596,7 +620,7 @@ public class DBProject {
         // Given a hotelID, roomNo, get the count of repairs per year
         try {
             String query = "SELECT extract(year from R.repairDate) as ryear, count(*) FROM Repair R WHERE R.roomNo = ";
-            
+
             System.out.print("\tEnter Room number: ");
             String input = in.readLine();
             input = "\'" + input + "\' AND R.hotelID = ";
