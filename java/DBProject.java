@@ -429,6 +429,12 @@ public class DBProject {
       // Your code goes here.
       // ...
       // ...
+      SELECT COUNT(*)
+      FROM Room R
+      WHERE R.roomNo NOT IN (SELECT B.roomNo
+      FROM Booking B
+      WHERE R.hotelID = B.hotelID);
+      
    }//end numberOfAvailableRooms
    
    public static void numberOfBookedRooms(DBProject esql){
