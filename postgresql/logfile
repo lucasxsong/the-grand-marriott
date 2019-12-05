@@ -1,0 +1,1555 @@
+2019-12-04 18:25:51.041 PST [31948] LOG:  listening on IPv6 address "::1", port 8192
+2019-12-04 18:25:51.041 PST [31948] LOG:  listening on IPv4 address "127.0.0.1", port 8192
+2019-12-04 18:25:51.043 PST [31948] LOG:  listening on Unix socket "/tmp/.s.PGSQL.8192"
+2019-12-04 18:25:51.057 PST [31949] LOG:  database system was shut down at 2019-12-04 18:25:43 PST
+2019-12-04 18:25:51.062 PST [31948] LOG:  database system is ready to accept connections
+2019-12-05 11:03:37.024 PST [35308] FATAL:  role "localhost" does not exist
+2019-12-05 11:03:43.702 PST [35401] FATAL:  role "8192" does not exist
+2019-12-05 11:03:49.689 PST [35483] FATAL:  database "lucassong" does not exist
+2019-12-05 11:04:05.203 PST [35646] FATAL:  database "lucassong_DB" does not exist
+2019-12-05 11:05:07.279 PST [36291] FATAL:  database "lucassong_DB" does not exist
+2019-12-05 11:05:17.688 PST [36424] FATAL:  database "lucassong_DB" does not exist
+2019-12-05 11:07:33.636 PST [37957] ERROR:  could not open file "hotel.csv" for reading: No such file or directory
+2019-12-05 11:07:33.636 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.636 PST [37957] STATEMENT:  COPY Hotel(	hotelID,			 
+				address,	   
+	            manager)
+	FROM 'hotel.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.637 PST [37957] ERROR:  could not open file "staff.csv" for reading: No such file or directory
+2019-12-05 11:07:33.637 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.637 PST [37957] STATEMENT:  COPY Staff(SSN, 
+				fName, 
+				lName, 
+				address,
+				role,
+				employerID)
+	FROM 'staff.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.639 PST [37957] ERROR:  could not open file "room.csv" for reading: No such file or directory
+2019-12-05 11:07:33.639 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.639 PST [37957] STATEMENT:  COPY Room(	hotelID,
+			    roomNo,
+				roomType)
+	FROM 'room.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.640 PST [37957] ERROR:  could not open file "customer.csv" for reading: No such file or directory
+2019-12-05 11:07:33.640 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.640 PST [37957] STATEMENT:  COPY Customer(	customerID,
+				    fName,
+				    lName,
+				    Address,
+					phNo,
+					DOB,
+				    gender)
+	FROM 'customer.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.640 PST [37957] ERROR:  could not open file "maintenanceCompany.csv" for reading: No such file or directory
+2019-12-05 11:07:33.640 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.640 PST [37957] STATEMENT:  COPY MaintenanceCompany(cmpID,
+							name,
+							address,
+							isCertified)
+	FROM 'maintenanceCompany.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.640 PST [37957] ERROR:  could not open file "booking.csv" for reading: No such file or directory
+2019-12-05 11:07:33.640 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.640 PST [37957] STATEMENT:  COPY Booking( bID,
+				  customer,
+				  hotelID,
+				  roomNo,
+				  bookingDate,
+				  noOfPeople,
+				  price)
+	FROM 'booking.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.641 PST [37957] ERROR:  could not open file "repair.csv" for reading: No such file or directory
+2019-12-05 11:07:33.641 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.641 PST [37957] STATEMENT:  COPY Repair( rID,
+				 hotelID,
+				 roomNo,
+				 mCompany,
+				 repairDate,
+				 description,
+				 repairType)
+	FROM 'repair.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.641 PST [37957] ERROR:  could not open file "request.csv" for reading: No such file or directory
+2019-12-05 11:07:33.641 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.641 PST [37957] STATEMENT:  COPY Request(reqID,
+				 managerID,
+				 repairID,
+				 requestDate,
+				 description)
+	FROM 'request.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:07:33.641 PST [37957] ERROR:  could not open file "assigned.csv" for reading: No such file or directory
+2019-12-05 11:07:33.641 PST [37957] HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+2019-12-05 11:07:33.641 PST [37957] STATEMENT:  COPY Assigned(asgID,
+				  staffID,
+				  hotelID,
+				  roomNo)
+	FROM 'assigned.csv'
+	WITH DELIMITER ',';
+2019-12-05 11:39:54.751 PST [45392] ERROR:  date/time field value out of range: "4949995" at character 138
+2019-12-05 11:39:54.751 PST [45392] HINT:  Perhaps you need a different "datestyle" setting.
+2019-12-05 11:39:54.751 PST [45392] STATEMENT:  INSERT INTO Customer
+	    (customerID, fName, lName, Address, phNo, DOB, gender)
+	VALUES
+	    ('1234', 'lucas', 'song', '12f lol', '49999', '4949995', 'male');
+2019-12-05 11:40:03.561 PST [45513] ERROR:  date/time field value out of range: "4949-99-05" at character 138
+2019-12-05 11:40:03.561 PST [45513] HINT:  Perhaps you need a different "datestyle" setting.
+2019-12-05 11:40:03.561 PST [45513] STATEMENT:  INSERT INTO Customer
+	    (customerID, fName, lName, Address, phNo, DOB, gender)
+	VALUES
+	    ('1234', 'lucas', 'song', '12f lol', '49999', '4949-99-05', 'male');
+2019-12-05 11:40:15.885 PST [45665] ERROR:  invalid input value for enum gendertype: "male" at character 152
+2019-12-05 11:40:15.885 PST [45665] STATEMENT:  INSERT INTO Customer
+	    (customerID, fName, lName, Address, phNo, DOB, gender)
+	VALUES
+	    ('1234', 'lucas', 'song', '12f lol', '49999', '2019-12-05', 'male');
+2019-12-05 11:40:25.031 PST [45766] ERROR:  duplicate key value violates unique constraint "customer_pkey"
+2019-12-05 11:40:25.031 PST [45766] DETAIL:  Key (customerid)=(1234) already exists.
+2019-12-05 11:40:25.031 PST [45766] STATEMENT:  INSERT INTO Customer
+	    (customerID, fName, lName, Address, phNo, DOB, gender)
+	VALUES
+	    ('1234', 'lucas', 'song', '12f lol', '49999', '2019-12-05', 'Male');
+2019-12-05 11:42:53.313 PST [47423] ERROR:  column "date" does not exist at character 175
+2019-12-05 11:42:53.313 PST [47423] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate = date OR B.bookingDate = date1 OR B.bookingDate = date2 OR B.bookingDate = date3 OR B.bookingDate = date4 OR B.bookingDate = date5 OR B.bookingDate = date6);
+2019-12-05 11:47:25.437 PST [49691] ERROR:  syntax error at or near "date" at character 1
+2019-12-05 11:47:25.437 PST [49691] STATEMENT:  date = '12-6-2016'
+	date = '12-13-2016'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= date OR B.bookingDate <= dataend;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:47:31.053 PST [49745] ERROR:  syntax error at or near "date" at character 1
+2019-12-05 11:47:31.053 PST [49745] STATEMENT:  date = '12/6/2016'
+	date = '12/13/2016'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= date OR B.bookingDate <= dataend;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:47:38.688 PST [49836] ERROR:  syntax error at or near "date" at character 1
+2019-12-05 11:47:38.688 PST [49836] STATEMENT:  date = '12/6/2016'
+	date = '12/13/2016'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= date OR B.bookingDate <= dataend;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:49:24.601 PST [50841] ERROR:  syntax error at or near "date" at character 1
+2019-12-05 11:49:24.601 PST [50841] STATEMENT:  date = new Date()
+	date = 
+	dateend = '12/13/2016'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= DATE '12/6/2016' OR B.bookingDate <= DATE '12/6/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:49:30.788 PST [50913] ERROR:  syntax error at or near "date" at character 1
+2019-12-05 11:49:30.788 PST [50913] STATEMENT:  date = new Date()
+	date = 
+	dateend = '12/13/2016'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= DATE '12/6/2016' OR B.bookingDate <= DATE '12/6/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:49:33.648 PST [50964] ERROR:  syntax error at or near ";" at character 229
+2019-12-05 11:49:33.648 PST [50964] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= DATE '12/6/2016' OR B.bookingDate <= DATE '12/6/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:51:56.711 PST [51775] ERROR:  syntax error at or near ";" at character 229
+2019-12-05 11:51:56.711 PST [51775] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= DATE '12/6/2016' OR B.bookingDate <= DATE '12/6/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:52:05.053 PST [51868] ERROR:  syntax error at or near ";" at character 219
+2019-12-05 11:52:05.053 PST [51868] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' OR B.bookingDate <= '12/6/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:52:15.748 PST [52001] ERROR:  syntax error at or near ";" at character 219
+2019-12-05 11:52:15.748 PST [52001] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' OR B.bookingDate <= '12/9/2016';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2019-12-05 11:54:55.738 PST [53688] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:54:55.738 PST [53688] STATEMENT:  hotelID = 1
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = 1 AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:01.099 PST [53739] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:01.099 PST [53739] STATEMENT:  hotelID = 1
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = 1 AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:03.411 PST [53800] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:03.411 PST [53800] STATEMENT:  hotelID = 1
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = '1' AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:05.600 PST [53831] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:05.600 PST [53831] STATEMENT:  hotelID = 1
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = '1' AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:09.315 PST [53882] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:09.315 PST [53882] STATEMENT:  hotelID = 1
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = '1' AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:29.611 PST [54119] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:29.611 PST [54119] STATEMENT:  hotelID = '1'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:33.780 PST [54171] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:33.780 PST [54171] STATEMENT:  hotelID = '1'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:38.978 PST [54231] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:38.978 PST [54231] STATEMENT:  hotelID = '1'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:55:44.984 PST [54304] ERROR:  syntax error at or near "hotelID" at character 1
+2019-12-05 11:55:44.984 PST [54304] STATEMENT:  hotelID = '1'
+	SELECT R.roomNo, R.roomType
+	FROM Room R
+	WHERE R.hotelID = hotelID AND R.roomNo NOT IN (SELECT B.roomNo
+	    FROM Booking B
+	    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/6/2016' AND B.bookingDate <= '12/13/2016');
+2019-12-05 11:58:40.175 PST [56269] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:58:40.175 PST [56269] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT k
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:58:49.048 PST [56362] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:58:49.048 PST [56362] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT k
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:58:50.062 PST [56393] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:58:50.062 PST [56393] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT k
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:01.427 PST [56544] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:59:01.427 PST [56544] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT 5
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:24.788 PST [56779] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:59:24.788 PST [56779] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT 5
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:42.447 PST [56983] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:59:42.447 PST [56983] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT 5
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:44.793 PST [57015] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:59:44.793 PST [57015] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT 5
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:56.313 PST [57147] ERROR:  syntax error at or near "WHERE" at character 60
+2019-12-05 11:59:56.313 PST [57147] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT 5
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:57.618 PST [57178] ERROR:  syntax error at or near "WHERE" at character 62
+2019-12-05 11:59:57.618 PST [57178] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT '5'
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:58.164 PST [57189] ERROR:  syntax error at or near "WHERE" at character 62
+2019-12-05 11:59:58.164 PST [57189] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT '5'
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:58.603 PST [57200] ERROR:  syntax error at or near "WHERE" at character 62
+2019-12-05 11:59:58.603 PST [57200] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT '5'
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 11:59:59.018 PST [57211] ERROR:  syntax error at or near "WHERE" at character 62
+2019-12-05 11:59:59.018 PST [57211] STATEMENT:  SELECT R.roomNo, R.roomType
+	FROM Booking B, Room R
+	LIMIT '5'
+	WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+	ORDER BY B.price DESC;
+2019-12-05 12:05:32.605 PST [60625] ERROR:  syntax error at or near "AND" at character 63
+2019-12-05 12:05:32.605 PST [60625] STATEMENT:  SELECT sum(B.price)
+	FROM Booking B, Room R, Customer C
+	WHERE  AND B.customer = C.customerID AND C.fname = 'wbvu' AND C.lname = 'lroe' AND B.bookingDate >= '1/1/1000' AND B.bookingDate <= '1/1/2041';
+2019-12-05 12:06:59.104 PST [61441] ERROR:  relation "maintenance" does not exist at character 57
+2019-12-05 12:06:59.104 PST [61441] STATEMENT:  SELECT R.repairType, R.hotelID, R.roomNo
+	FROM Repair R, Maintenance M
+	WHERE R.mcompany = M.cmpID AND M.name = 'ylbx';
+2019-12-05 12:07:08.955 PST [61562] ERROR:  relation "maintenance" does not exist at character 57
+2019-12-05 12:07:08.955 PST [61562] STATEMENT:  SELECT R.repairType, R.hotelID, R.roomNo
+	FROM Repair R, Maintenance M
+	WHERE R.mcompany = M.cmpID AND M.name = 'ylbx';
+2019-12-05 12:07:17.687 PST [61675] ERROR:  relation "maintenance" does not exist at character 57
+2019-12-05 12:07:17.687 PST [61675] STATEMENT:  SELECT R.repairType, R.hotelID, R.roomNo
+	FROM Repair R, Maintenance M
+	WHERE R.mcompany = M.cmpID AND M.name = 'ylbx';
+2019-12-05 12:08:05.802 PST [62185] ERROR:  syntax error at or near "WHERE" at character 157
+2019-12-05 12:08:05.802 PST [62185] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	LIMIT k
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC;
+2019-12-05 12:08:11.699 PST [62256] ERROR:  syntax error at or near "WHERE" at character 157
+2019-12-05 12:08:11.699 PST [62256] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	LIMIT k
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC;
+2019-12-05 12:09:48.707 PST [63245] ERROR:  missing FROM-clause entry for table "r1" at character 38
+2019-12-05 12:09:48.707 PST [63245] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:09:59.691 PST [63377] ERROR:  missing FROM-clause entry for table "r1" at character 38
+2019-12-05 12:09:59.691 PST [63377] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:00.554 PST [63388] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:00.554 PST [63388] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:00.554 PST [63388] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:01.121 PST [63400] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:01.121 PST [63400] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:01.121 PST [63400] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:08.775 PST [63492] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:08.775 PST [63492] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:08.775 PST [63492] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:09.507 PST [63523] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:09.507 PST [63523] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:09.507 PST [63523] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:10.020 PST [63534] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:10.020 PST [63534] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:10.020 PST [63534] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:10.456 PST [63545] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:10.456 PST [63545] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:10.456 PST [63545] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:10.869 PST [63556] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:10.869 PST [63556] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:10.869 PST [63556] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:11.284 PST [63587] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:11.284 PST [63587] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:11.284 PST [63587] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:11.716 PST [63598] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:11.716 PST [63598] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:11.716 PST [63598] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:12.377 PST [63609] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:12.377 PST [63609] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:12.377 PST [63609] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:34.369 PST [63843] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:34.369 PST [63843] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:34.369 PST [63843] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:35.024 PST [63854] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:35.024 PST [63854] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:35.024 PST [63854] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:35.567 PST [63887] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:35.567 PST [63887] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:35.567 PST [63887] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:10:36.337 PST [63898] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:10:36.337 PST [63898] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:10:36.337 PST [63898] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:01.829 PST [64173] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:01.829 PST [64173] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:01.829 PST [64173] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:02.487 PST [64184] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:02.487 PST [64184] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:02.487 PST [64184] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:03.085 PST [64196] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:03.085 PST [64196] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:03.085 PST [64196] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:03.627 PST [64227] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:03.627 PST [64227] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:03.627 PST [64227] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:05.143 PST [64247] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:05.143 PST [64247] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:05.143 PST [64247] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:08.684 PST [64299] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:08.684 PST [64299] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:08.684 PST [64299] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:18.972 PST [64412] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:18.972 PST [64412] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:18.972 PST [64412] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:19.748 PST [64443] ERROR:  column r1.id does not exist at character 38
+2019-12-05 12:11:19.748 PST [64443] HINT:  Perhaps you meant to reference the column "r1.rid".
+2019-12-05 12:11:19.748 PST [64443] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.id as rID, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:20.303 PST [64454] ERROR:  column "r1.rid" must appear in the GROUP BY clause or be used in an aggregate function at character 38
+2019-12-05 12:11:20.303 PST [64454] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.rID as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:11:20.960 PST [64465] ERROR:  column "r1.rid" must appear in the GROUP BY clause or be used in an aggregate function at character 38
+2019-12-05 12:11:20.960 PST [64465] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.rID as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:12:25.793 PST [65145] ERROR:  column "k" does not exist at character 206
+2019-12-05 12:12:25.793 PST [65145] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.mCompany as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:12:26.562 PST [65157] ERROR:  column "k" does not exist at character 206
+2019-12-05 12:12:26.562 PST [65157] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.mCompany as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:12:29.617 PST [65208] ERROR:  column "k" does not exist at character 206
+2019-12-05 12:12:29.617 PST [65208] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.mCompany as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:12:30.335 PST [65219] ERROR:  column "k" does not exist at character 206
+2019-12-05 12:12:30.335 PST [65219] STATEMENT:  SELECT M2.name, M.count
+	FROM (SELECT R1.mCompany as id, COUNT(*) as count
+	        FROM Repair R1
+	        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+	WHERE M2.cmpID = M.id
+	ORDER BY M.count DESC
+	LIMIT k;
+2019-12-05 12:13:52.011 PST [66033] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:13:52.011 PST [66033] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE roomNo = R.roomNo AND R.hotelID = hotelID;
+2019-12-05 12:14:03.176 PST [66151] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:14:03.176 PST [66151] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE roomNo = R.roomNo AND R.hotelID = hotelID;
+2019-12-05 12:14:03.873 PST [66176] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:14:03.873 PST [66176] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE roomNo = R.roomNo AND R.hotelID = hotelID;
+2019-12-05 12:14:11.234 PST [66264] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:14:11.234 PST [66264] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:14:11.983 PST [66282] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:14:11.983 PST [66282] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:16:17.029 PST [67072] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:16:17.029 PST [67072] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:16:34.759 PST [67274] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:16:34.759 PST [67274] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:16:36.018 PST [67305] ERROR:  column "r.repairdate" must appear in the GROUP BY clause or be used in an aggregate function at character 36
+2019-12-05 12:16:36.018 PST [67305] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:17:31.485 PST [67894] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:17:31.485 PST [67894] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:17:43.311 PST [68039] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:17:43.311 PST [68039] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:17:46.009 PST [68079] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:17:46.009 PST [68079] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:17:59.347 PST [68241] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:17:59.347 PST [68241] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE '5' = R.roomNo AND R.hotelID = '1';
+2019-12-05 12:18:01.520 PST [68272] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:18:01.520 PST [68272] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:09.964 PST [68364] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:18:09.964 PST [68364] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:10.797 PST [68375] ERROR:  syntax error at or near "FROM" at character 78
+2019-12-05 12:18:10.797 PST [68375] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY YEAR FROM R.repairDate
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:19.672 PST [68489] ERROR:  syntax error at or near "FROM" at character 78
+2019-12-05 12:18:19.672 PST [68489] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY YEAR FROM R.repairDate
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:20.356 PST [68500] ERROR:  syntax error at or near "FROM" at character 78
+2019-12-05 12:18:20.356 PST [68500] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate)
+	FROM Repair R
+	GROUP BY YEAR FROM R.repairDate
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:21.162 PST [68515] ERROR:  syntax error at or near "FROM" at character 41
+2019-12-05 12:18:21.162 PST [68515] STATEMENT:  SELECT COUNT(*), YEAR FROM R.repairDate
+	FROM Repair R
+	GROUP BY YEAR FROM R.repairDate
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:18:21.987 PST [68542] ERROR:  syntax error at or near "FROM" at character 41
+2019-12-05 12:18:21.987 PST [68542] STATEMENT:  SELECT COUNT(*), YEAR FROM R.repairDate
+	FROM Repair R
+	GROUP BY YEAR FROM R.repairDate
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:09.962 PST [69001] ERROR:  syntax error at or near "as" at character 113
+2019-12-05 12:19:09.962 PST [69001] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate) as yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:11.581 PST [69032] ERROR:  syntax error at or near "as" at character 113
+2019-12-05 12:19:11.581 PST [69032] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate) as yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:31.596 PST [69246] ERROR:  syntax error at or near "as" at character 113
+2019-12-05 12:19:31.596 PST [69246] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate) as yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:32.521 PST [69257] ERROR:  syntax error at or near "as" at character 113
+2019-12-05 12:19:32.521 PST [69257] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate) as yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:33.262 PST [69288] ERROR:  syntax error at or near "WHERE" at character 113
+2019-12-05 12:19:33.262 PST [69288] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:19:46.431 PST [69439] ERROR:  syntax error at or near "WHERE" at character 86
+2019-12-05 12:19:46.431 PST [69439] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY 1, 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:21:10.708 PST [70286] ERROR:  syntax error at or near "WHERE" at character 83
+2019-12-05 12:21:10.708 PST [70286] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:21:40.638 PST [70601] ERROR:  syntax error at or near "WHERE" at character 83
+2019-12-05 12:21:40.638 PST [70601] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:26:52.925 PST [72737] ERROR:  syntax error at or near "WHERE" at character 86
+2019-12-05 12:26:52.925 PST [72737] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:27:09.857 PST [72930] ERROR:  syntax error at or near "WHERE" at character 86
+2019-12-05 12:27:09.857 PST [72930] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:29:18.056 PST [73974] ERROR:  syntax error at or near "WHERE" at character 86
+2019-12-05 12:29:18.056 PST [73974] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:29:40.722 PST [74207] ERROR:  syntax error at or near "WHERE" at character 86
+2019-12-05 12:29:40.722 PST [74207] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY yyyy
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:29:44.161 PST [74259] ERROR:  syntax error at or near "WHERE" at character 113
+2019-12-05 12:29:44.161 PST [74259] STATEMENT:  SELECT COUNT(*), EXTRACT(YEAR FROM R.repairDate) as yyyy
+	FROM Repair R
+	GROUP BY EXTRACT(YEAR FROM R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:31:09.516 PST [74825] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:31:09.516 PST [74825] STATEMENT:  SELECT COUNT(*), date_trunc('year', R.repairDate)
+	FROM Repair R
+	GROUP BY 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:31:14.052 PST [74898] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:31:14.052 PST [74898] STATEMENT:  SELECT COUNT(*), date_trunc('year', R.repairDate)
+	FROM Repair R
+	GROUP BY 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:31:19.771 PST [74969] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:31:19.771 PST [74969] STATEMENT:  SELECT COUNT(2), date_trunc('year', R.repairDate)
+	FROM Repair R
+	GROUP BY 2
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:31:44.303 PST [75223] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:31:44.303 PST [75223] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(2)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:31:51.078 PST [75294] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:31:51.078 PST [75294] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(2)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:32:23.251 PST [75631] ERROR:  syntax error at or near "FROM" at character 1
+2019-12-05 12:32:23.251 PST [75631] STATEMENT:  FROM Repair R
+	SELECT date_trunc('year', R.repairDate), COUNT(2)
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:32:35.260 PST [75766] ERROR:  syntax error at or near "FROM" at character 1
+2019-12-05 12:32:35.260 PST [75766] STATEMENT:  FROM Repair R
+	SELECT date_trunc('year', R.repairDate), COUNT(2)
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:32:36.268 PST [75797] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:32:36.268 PST [75797] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:32:37.004 PST [75808] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:32:37.004 PST [75808] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:32:51.695 PST [75977] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:32:51.695 PST [75977] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:23.422 PST [76296] ERROR:  syntax error at or near "WHERE" at character 107
+2019-12-05 12:33:23.422 PST [76296] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY date_trunc('year', R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:38.259 PST [76490] ERROR:  syntax error at or near "WHERE" at character 107
+2019-12-05 12:33:38.259 PST [76490] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY date_trunc('year', R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:46.300 PST [76582] ERROR:  syntax error at or near "WHERE" at character 107
+2019-12-05 12:33:46.300 PST [76582] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY date_trunc('year', R.repairDate)
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:47.106 PST [76593] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:33:47.106 PST [76593] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:47.660 PST [76615] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:33:47.660 PST [76615] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:48.080 PST [76635] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:33:48.080 PST [76635] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:53.168 PST [76686] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:33:53.168 PST [76686] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:53.885 PST [76717] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:33:53.885 PST [76717] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:33:54.583 PST [76729] ERROR:  column "r.repairdate" must appear in the GROUP BY clause or be used in an aggregate function at character 27
+2019-12-05 12:33:54.583 PST [76729] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:34:12.251 PST [76916] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:34:12.251 PST [76916] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:34:12.909 PST [76927] ERROR:  syntax error at or near "WHERE" at character 76
+2019-12-05 12:34:12.909 PST [76927] STATEMENT:  SELECT date_trunc('year', R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '5' AND R.hotelID = '1';
+2019-12-05 12:37:03.828 PST [78950] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:03.828 PST [78950] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:04.667 PST [78961] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:04.667 PST [78961] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:08.882 PST [79014] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:08.882 PST [79014] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(1)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:11.576 PST [79055] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:11.576 PST [79055] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(*)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:19.226 PST [79148] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:19.226 PST [79148] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(*)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:19.903 PST [79179] ERROR:  syntax error at or near "WHERE" at character 105
+2019-12-05 12:37:19.903 PST [79179] STATEMENT:  SELECT extract(year from R.repairDate), COUNT(*)
+	FROM Repair R
+	GROUP BY extract(year from R.repairDate)
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:32.892 PST [79322] ERROR:  column "r.repairdate" must appear in the GROUP BY clause or be used in an aggregate function at character 26
+2019-12-05 12:37:32.892 PST [79322] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:45.851 PST [79484] ERROR:  syntax error at or near "WHERE" at character 75
+2019-12-05 12:37:45.851 PST [79484] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:46.600 PST [79495] ERROR:  syntax error at or near "WHERE" at character 75
+2019-12-05 12:37:46.600 PST [79495] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:37:47.293 PST [79506] ERROR:  syntax error at or near "WHERE" at character 75
+2019-12-05 12:37:47.293 PST [79506] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:12.168 PST [79781] ERROR:  syntax error at or near "WHERE" at character 75
+2019-12-05 12:38:12.168 PST [79781] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:12.798 PST [79792] ERROR:  syntax error at or near "WHERE" at character 75
+2019-12-05 12:38:12.798 PST [79792] STATEMENT:  SELECT extract(year from R.repairDate), count(*)
+	FROM Repair R
+	GROUP BY 1
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:13.506 PST [79804] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:13.506 PST [79804] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:14.188 PST [79835] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:14.188 PST [79835] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:14.853 PST [79846] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:14.853 PST [79846] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:15.476 PST [79858] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:15.476 PST [79858] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:24.984 PST [79969] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:24.984 PST [79969] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
+2019-12-05 12:38:25.629 PST [79985] ERROR:  syntax error at or near "WHERE" at character 88
+2019-12-05 12:38:25.629 PST [79985] STATEMENT:  SELECT extract(year from R.repairDate) as ryear, count(*)
+	FROM Repair R
+	GROUP BY ryear
+	WHERE R.roomNo = '1' AND R.hotelID = '126';
