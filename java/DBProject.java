@@ -331,48 +331,49 @@ public class DBProject {
    
    public static void addCustomer(DBProject esql){
       try {
-         // Gather customer first name
-         String fname = "";
-         while (fname == "" || fname.length() >= 30) {
-            System.out.print("\tEnter customer's first name: ");
-            fname = in.readLine();
-         }
-         // Gather customer last name
-         String lname = "";
-         while (lname == "" || lname.length() >= 30) {
-            System.out.print("\tEnter customer's last name: ");
-            lname = in.readLine();
-         }
-         // Gather customer address
-         String address = "";
-         while (address == "") {
-            System.out.print("\tEnter customer's address :");
-            address = in.readLine();
-         }
-         // Gather customer phone
-         String phoneNum = "";
-         while (!isValidPhone(phoneNum)) {
-            System.out.print("\tEnter customer's phone number (0123456789): ");
-            phoneNum = in.readLine();         
-         }
-         // Gather customer DOB
-         String customerDOB = "";
-         while (customerDOB == "" || !isValidDate(customerDOB)) {
-            System.out.print("\tEnter DOB \'MM/DD/YYYY\': ");
-            customerDOB = in.readLine();   
-         }
+        //  // Gather customer first name
+        //  String fname = "";
+        //  while (fname == "" || fname.length() >= 30) {
+        //     System.out.print("\tEnter customer's first name: ");
+        //     fname = in.readLine();
+        //  }
+        //  // Gather customer last name
+        //  String lname = "";
+        //  while (lname == "" || lname.length() >= 30) {
+        //     System.out.print("\tEnter customer's last name: ");
+        //     lname = in.readLine();
+        //  }
+        //  // Gather customer address
+        //  String address = "";
+        //  while (address == "") {
+        //     System.out.print("\tEnter customer's address :");
+        //     address = in.readLine();
+        //  }
+        //  // Gather customer phone
+        //  String phoneNum = "";
+        //  while (!isValidPhone(phoneNum)) {
+        //     System.out.print("\tEnter customer's phone number (0123456789): ");
+        //     phoneNum = in.readLine();         
+        //  }
+        //  // Gather customer DOB
+        //  String customerDOB = "";
+        //  while (customerDOB == "" || !isValidDate(customerDOB)) {
+        //     System.out.print("\tEnter DOB \'MM/DD/YYYY\': ");
+        //     customerDOB = in.readLine();   
+        //  }
          // Gather customer gender
          String gender = "";
-         while (gender != "Male" && gender != "Female" && gender != "Other") {
+         while (!gender.equals("Male") && !gender.equals("Female") && !gender.equals("Other")) {
             System.out.print("\tPlease choose gender (Male, Female, Other): ");
             gender = in.readLine();
+            System.out.println(gender);
          }
          // Generate new customerID
          String newCustomerID = Integer.toString(esql.getNewID(getNumCustomers));
 
-         String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
-         // Execute query
-         esql.executeUpdate(query);
+        //  String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
+        //  // Execute query
+        //  esql.executeUpdate(query);
       }catch(Exception e) {
          System.err.println(e.getMessage());
       }
