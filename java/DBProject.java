@@ -365,7 +365,7 @@ public class DBProject {
          }
          // Gather customer gender
          String gender = "";
-         while (gender != "Male" || gender != "Female" || gender != "Other") {
+         while (gender != "Male" && gender != "Female" && gender != "Other") {
             System.out.print("\tPlease choose gender (Male, Female, Other): ");
             gender = in.readLine();
          }
