@@ -14,6 +14,9 @@
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -163,6 +166,33 @@ public class DBProject {
    }
 
    /**
+    * Method to check that a phone number is of valid format
+    */
+   public static boolean isValidPhone(String phoneNum) throws Exception {
+      // Check number of inputs and if letter exists in string
+      if (phoneNum.matches("[0-9]+") && phoneNum.length() == 10) {
+         return true;
+      }
+      // Return false if any character other than 0-9 is found, or if there are not exactly 10 numbers
+      System.out.println("Invalid phone number, please try again.");
+      return false;
+   }
+
+   /**
+    * Method to check that a date is of valid format
+    */
+   public static boolean isValidDate(String date) throws Exception {
+      try {
+         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+         df.setLenient(false);
+         df.parse(date);
+         return true;  
+      } catch (ParseException e) {
+         return false;
+      }
+   }
+
+   /**
     * Method to close the physical connection if it is open.
     */
    public void cleanup(){
@@ -302,23 +332,47 @@ public class DBProject {
    
    public static void addCustomer(DBProject esql){
       try {
-         System.out.print("\tEnter customer's first name: ");
-         String fname = in.readLine();
-         System.out.print("\tEnter customer's last name: ");
-         String lname = in.readLine();
-         System.out.print("\tEnter customer's address :");
-         String address = in.readLine();
-         System.out.print("\tEnter customer's phone number: ");
-         String phoneNum = in.readLine();
-         System.out.print("\tEnter DOB \'YYYY-MM-DD\': ");
-         String customerDOB = in.readLine();
-         System.out.print("\tPlease choose gender (Male, Female, Other): ");
-         String gender = in.readLine();
-         
-         String query = "INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender)";
-         query += "VALUES (\''";
-         query += "\'', \''" + fname + "\'', \''" + lname + "\'', \''" + address + "\'', \''" + phoneNum + "\'', \''" + customerDOB + "\'', \''" + gender + "\');'";
-         
+         // Gather customer first name
+         String fname = "";
+         while (fname == "" || fname.length() >= 30) {
+            System.out.print("\tEnter customer's first name: ");
+            fname = in.readLine();
+         }
+         // Gather customer last name
+         String lname = "";
+         while (lname == "" || lname.length() >= 30) {
+            System.out.print("\tEnter customer's last name: ");
+            lname = in.readLine();
+         }
+         // Gather customer address
+         String address = "";
+         while (address == "") {
+            System.out.print("\tEnter customer's address :");
+            address = in.readLine();
+         }
+         // Gather customer phone
+         String phoneNum = "";
+         while (!isValidPhone(phoneNum)) {
+            System.out.print("\tEnter customer's phone number (0123456789): ");
+            phoneNum = in.readLine();         
+         }
+         // Gather customer DOB
+         String customerDOB = "";
+         while (customerDOB == "" || !isValidDate(customerDOB)) {
+            System.out.print("\tEnter DOB \'YYYY-MM-DD\': ");
+            customerDOB = in.readLine();   
+         }
+         // Gather customer gender
+         String gender = "";
+         while (gender != "Male" || gender != "Female" || gender != "Other") {
+            System.out.print("\tPlease choose gender (Male, Female, Other): ");
+            gender = in.readLine();
+         }
+         // Generate new customerID
+         String newCustomerID = Integer.toString(esql.getNewID(getNumCustomers));
+
+         String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
+         // Execute query
 
       }catch(Exception e) {
          
