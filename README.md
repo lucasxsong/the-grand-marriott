@@ -7,6 +7,7 @@
 - [ ] paste queries into java functions
 
 - [ ] create gui for java
+- [ ] create index for queries?
 
 Folder structure 
 > data - holds the necessary data files, these are used by create.sql to insert data into the tables 
