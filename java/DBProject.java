@@ -37,7 +37,13 @@ public class DBProject {
    static BufferedReader in = new BufferedReader(
                                 new InputStreamReader(System.in));
 
-   static String getNumCustomers = "SELECT COUNT(*) FROM CUSTOMERS;";
+   // global query strings for generating new IDs
+   static String getNumCustomers = "SELECT COUNT(*) FROM Customer;";
+   static String getNumCompanies = "SELECT COUNT(*) FROM MaintenanceCompany;";
+   static String getNumRepairs = "SELECT COUNT(*) FROM Repair;";
+   static String getNumBookings = "SELECT COUNT(*) FROM Booking;";
+   static String getNumAssigned = "SELECT COUNT(*) FROM Assigned;";
+   static String getNumRequests = "SELECT COUNT(*) FROM Request;";
 
    /**
     * Creates a new instance of DBProject
@@ -126,6 +132,35 @@ public class DBProject {
       stmt.close ();
       return rowCount;
    }//end executeQuery
+
+   /**
+    * Method to gather the number of rows (or ids) in order to generate a new one
+    */
+   public int getNewID(String countQuery) throws SQLException {
+      // creates a statement object
+      Statement stmt = this._connection.createStatement();
+
+      // Issues the query instruction
+      ResultSet rs = stmt.executeQuery(countQuery);
+
+      int rowCount = 0;
+
+      // iterates through the result set to find the return statement with the number of rows
+      boolean outputHeader = true;
+      while (rs.next()){
+	      if(outputHeader) {
+	        outputHeader = false;
+         }
+         else {
+            rowCount = rs.getInt(0);
+            break;
+         }
+      }//end while
+      stmt.close ();
+
+      // return new ID : row count
+      return rowCount;
+   }
 
    /**
     * Method to close the physical connection if it is open.
@@ -229,11 +264,7 @@ public class DBProject {
    
    public static void Greeting(){
       System.out.println(
-         "\n\n*******************************************************\n" +
-         "              User Interface      	               \n" +
-         "*******************************************************\n");
-      System.out.println(
-         "\n\n*WELCOME TO DATABATES HOTEL\n*" +
+         "\n\n*****WELCOME TO DATABATES HOTEL*****\n" +
          "               /\\\\  \\\n" +
          "            __// \\\\  \\____\n" +
          "          /\\ //   \\\\ /\\   \\\n" +
@@ -243,7 +274,8 @@ public class DBProject {
          "         | ' ' ' ' ' ' |. .|\n" +
          "         | ' ' '_' ' ' |. .|\n" +
          "         | ' ' / \\ ' ' |. .|\n" +
-         "         |_'_'_|#|_'_'_|_.-'\n"
+         "         |_'_'_|#|_'_'_|_.-'\n" + 
+         "************************************\n"
       );
    }//end Greeting
 
@@ -285,12 +317,9 @@ public class DBProject {
          
          String query = "INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender)";
          query += "VALUES (\''";
-         // Create new getNum function like executeQuery that only returns the row count and doesn't output to console
-         // Integer newCustomerID = esql.executeQuery(getNumCustomers) + 1; // FIXME newCustomerID should be numrows in customer + 1
-         // query += newCustomerID.toString();
          query += "\'', \''" + fname + "\'', \''" + lname + "\'', \''" + address + "\'', \''" + phoneNum + "\'', \''" + customerDOB + "\'', \''" + gender + "\');'";
          
-         int rowCount = esql.executeQuery(query);
+
       }catch(Exception e) {
          
       }
