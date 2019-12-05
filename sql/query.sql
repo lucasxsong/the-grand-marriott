@@ -86,11 +86,11 @@
 
 -- TESTED --
 
-SELECT COUNT(*)
-FROM Room R
-WHERE R.hotelID = '5' AND R.roomNo NOT IN (SELECT B.roomNo
-FROM Booking B
-WHERE R.hotelID = B.hotelID AND B.hotelID = '5');
+-- SELECT COUNT(*)
+-- FROM Room R
+-- WHERE R.hotelID = '5' AND R.roomNo NOT IN (SELECT B.roomNo
+-- FROM Booking B
+-- WHERE R.hotelID = B.hotelID AND B.hotelID = '5');
 
 -- --    public static void numberOfBookedRooms(DBProject esql){
 -- -- 	  // Given a hotelID, get the count of rooms booked
@@ -102,9 +102,9 @@ WHERE R.hotelID = B.hotelID AND B.hotelID = '5');
 
 -- TESTED --
 
--- SELECT COUNT(*)
--- FROM Booking B
--- WHERE hotelID = B.hotelID;
+SELECT COUNT(*)
+FROM Booking B
+WHERE B.hotelID = '5';
 
 -- --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
 -- -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
