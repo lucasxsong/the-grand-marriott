@@ -92,29 +92,29 @@
 -- FROM Booking B
 -- WHERE R.hotelID = B.hotelID AND B.hotelID = '5');
 
--- --    public static void numberOfBookedRooms(DBProject esql){
--- -- 	  // Given a hotelID, get the count of rooms booked
--- --       // Your code goes here.
--- --       // ...
--- --       // ...
--- --    }//end numberOfBookedRooms
--- hotelID = USER_ENTERED
+-- -- --    public static void numberOfBookedRooms(DBProject esql){
+-- -- -- 	  // Given a hotelID, get the count of rooms booked
+-- -- --       // Your code goes here.
+-- -- --       // ...
+-- -- --       // ...
+-- -- --    }//end numberOfBookedRooms
+-- -- hotelID = USER_ENTERED
 
--- TESTED --
+-- -- TESTED --
 
-SELECT COUNT(*)
-FROM Booking B
-WHERE B.hotelID = '5';
+-- SELECT COUNT(*)
+-- FROM Booking B
+-- WHERE B.hotelID = '5';
 
--- --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
--- -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
--- --       // Your code goes here.
--- --       // ...
--- --       // ...
--- --    }//end listHotelRoomBookingsForAWeek
--- ** DATE **
+-- -- --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
+-- -- -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
+-- -- --       // Your code goes here.
+-- -- --       // ...
+-- -- --       // ...
+-- -- --    }//end listHotelRoomBookingsForAWeek
+-- -- ** DATE **
 
--- TESTED, need to substitute date and hotel id
+-- -- TESTED, need to substitute date and hotel id
 
 -- SELECT R.roomNo, R.roomType
 -- FROM Room R
@@ -122,14 +122,14 @@ WHERE B.hotelID = '5';
 --     FROM Booking B
 --     WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/8/2016' AND B.bookingDate <= '12/10/2016');
 
--- --    public static void topKHighestRoomPriceForADateRange(DBProject esql){
--- -- 	  // List Top K Rooms with the highest price for a given date range
--- --       // Your code goes here.
--- --       // ...
--- --       // ...
--- --    }//end topKHighestRoomPriceForADateRange
+-- -- --    public static void topKHighestRoomPriceForADateRange(DBProject esql){
+-- -- -- 	  // List Top K Rooms with the highest price for a given date range
+-- -- --       // Your code goes here.
+-- -- --       // ...
+-- -- --       // ...
+-- -- --    }//end topKHighestRoomPriceForADateRange
 
--- TESTED, need to substitute date and 'k'
+-- -- TESTED, need to substitute date and 'k'
 
 -- SELECT B.price, R.roomNo, R.roomType
 -- FROM Booking B, Room R
@@ -137,15 +137,15 @@ WHERE B.hotelID = '5';
 -- ORDER BY B.price DESC
 -- LIMIT 5;
 
--- --    public static void topKHighestPriceBookingsForACustomer(DBProject esql){
--- -- 	  // Given a customer Name, List Top K highest booking price for a customer 
--- --       // Your code goes here.
--- --       // ...
--- --       // ...
--- --    }//end topKHighestPriceBookingsForACustomer
--- k = user_defined
+-- -- --    public static void topKHighestPriceBookingsForACustomer(DBProject esql){
+-- -- -- 	  // Given a customer Name, List Top K highest booking price for a customer 
+-- -- --       // Your code goes here.
+-- -- --       // ...
+-- -- --       // ...
+-- -- --    }//end topKHighestPriceBookingsForACustomer
+-- -- k = user_defined
 
--- TESTED, need to substitute fname, lname and 'k'
+-- -- TESTED, need to substitute fname, lname and 'k'
 
 -- SELECT B.price
 -- FROM Booking B, Customer C
@@ -164,7 +164,7 @@ WHERE B.hotelID = '5';
 
 -- SELECT sum(B.price)
 -- FROM Booking B, Room R, Customer C
--- WHERE B.hotelID = '2' AND B.customer = C.customerID AND C.fname = 'wbvu' AND C.lname = 'lroe' AND B.bookingDate >= '1/1/1000' AND B.bookingDate <= '1/1/2041';
+-- WHERE B.hotelID = '381' AND B.customer = C.customerID AND C.fname = 'rzqs' AND C.lname = 'eyeg' AND B.bookingDate >= '1/1/1000' AND B.bookingDate <= '1/1/2041';
 
 -- --    public static void listRepairsMade(DBProject esql){
 -- -- 	  // Given a Maintenance company name list all the repairs along with repairType, hotelID and roomNo
@@ -176,9 +176,9 @@ WHERE B.hotelID = '5';
 
 -- TESTED, need to substitute maintenance company
 
--- SELECT R.repairType, R.hotelID, R.roomNo
--- FROM Repair R, MaintenanceCompany M
--- WHERE R.mcompany = M.cmpID AND M.name = 'ylbx';
+SELECT R.repairType, R.hotelID, R.roomNo
+FROM Repair R, MaintenanceCompany M
+WHERE R.mcompany = M.cmpID AND M.name = 'ylbx';
 
 -- --    public static void topKMaintenanceCompany(DBProject esql){
 -- -- 	  // List Top K Maintenance Company Names based on total repair count (descending order)
@@ -189,13 +189,13 @@ WHERE B.hotelID = '5';
 
 -- TESTED, need to substitute k
 
--- SELECT M2.name, M.count
--- FROM (SELECT R1.mCompany as id, COUNT(*) as count
---         FROM Repair R1
---         GROUP BY R1.mCompany) as M, MaintenanceCompany M2
--- WHERE M2.cmpID = M.id
--- ORDER BY M.count DESC
--- LIMIT 5;
+SELECT M2.name, M.count
+FROM (SELECT R1.mCompany as id, COUNT(*) as count
+        FROM Repair R1
+        GROUP BY R1.mCompany) as M, MaintenanceCompany M2
+WHERE M2.cmpID = M.id
+ORDER BY M.count DESC
+LIMIT 5;
 
 -- --    public static void numberOfRepairsForEachRoomPerYear(DBProject esql){
 -- -- 	  // Given a hotelID, roomNo, get the count of repairs per year
