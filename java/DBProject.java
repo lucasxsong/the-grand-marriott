@@ -174,7 +174,6 @@ public class DBProject {
          return true;
       }
       // Return false if any character other than 0-9 is found, or if there are not exactly 10 numbers
-      System.out.println("Invalid phone number, please try again.");
       return false;
    }
 
@@ -183,12 +182,11 @@ public class DBProject {
     */
    public static boolean isValidDate(String date) throws Exception {
       try {
-         DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
          df.setLenient(false);
          df.parse(date);
          return true;  
       } catch (ParseException e) {
-         System.out.println("Invalid date format, please try again.");
          return false;
       }
    }
@@ -360,7 +358,7 @@ public class DBProject {
          // Gather customer DOB
          String customerDOB = "";
          while (customerDOB == "" || !isValidDate(customerDOB)) {
-            System.out.print("\tEnter DOB \'MM-DD-YYYY\': ");
+            System.out.print("\tEnter DOB \'MM/DD/YYYY\': ");
             customerDOB = in.readLine();   
          }
          // Gather customer gender
