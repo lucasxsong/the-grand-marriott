@@ -204,6 +204,8 @@
 -- --       // ...
 -- --    }//end listRepairsMade
 
+-- TESTED, need to substitute room no & hotel ID
+
 SELECT extract(year from R.repairDate) as ryear, count(*)
 FROM Repair R
 WHERE R.roomNo = '1' AND R.hotelID = '126'
