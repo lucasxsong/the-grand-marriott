@@ -73,6 +73,12 @@ public class DBProject {
             System.out.println("Make sure you started postgres on this machine");
             System.exit(-1);
         } // end catch
+        try {
+            Thread.sleep(2000);  
+        }
+        catch (Exception e) {
+            
+        }
     }// end DBProject
 
     /**
@@ -322,7 +328,7 @@ public class DBProject {
                 // TimeUnit.SECONDS.sleep(1);
             }
             try {
-                Thread.sleep(3000);  
+                Thread.sleep(1000);  
             }
             catch (Exception e) {
                 
