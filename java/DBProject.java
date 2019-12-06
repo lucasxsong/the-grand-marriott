@@ -17,6 +17,9 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import sun.font.TrueTypeFont;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -179,6 +182,17 @@ public class DBProject {
    }
 
    /**
+    * Method to validate the input hotel ID
+    */
+   public static boolean isValidHotel(String hotelID) throws Exception {
+      Integer hotelNum = Integer.parseInt(hotelID);
+      if (hotelNum > 1000 || hotelNum < 0) {
+         return false;
+      }
+      return true;
+   }
+
+   /**
     * Method to close the physical connection if it is open.
     */
    public void cleanup(){
@@ -324,30 +338,35 @@ public class DBProject {
             System.out.print("\tEnter customer's first name: ");
             fname = in.readLine();
          }
+         
          // Gather customer last name
          String lname = "";
          while (lname == "" || lname.length() >= 30) {
             System.out.print("\tEnter customer's last name: ");
             lname = in.readLine();
          }
+         
          // Gather customer address
          String address = "";
          while (address == "") {
             System.out.print("\tEnter customer's address :");
             address = in.readLine();
          }
+         
          // Gather customer phone
          String phoneNum = "";
          while (!isValidPhone(phoneNum)) {
             System.out.print("\tEnter customer's phone number (0123456789): ");
             phoneNum = in.readLine();         
          }
+         
          // Gather customer DOB
          String customerDOB = "";
          while (customerDOB == "" || !isValidDate(customerDOB)) {
             System.out.print("\tEnter DOB \'MM/DD/YYYY\': ");
             customerDOB = in.readLine();   
          }
+         
          // Gather customer gender
          String gender = "";
          while (!gender.equals("Male") && !gender.equals("Female") && !gender.equals("Other")) {
@@ -355,13 +374,14 @@ public class DBProject {
             gender = in.readLine();
             System.out.println(gender);
          }
+
          // Generate new customerID
-         String newCustomerID = Integer.toString(esql.getNewID(getNumCustomers));
+         String newCustomerID = Integer.toString(esql.generateID("CUSTOMER"));
 
          String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
          // Execute query
          esql.executeUpdate(query);
-      }catch(Exception e) {
+      } catch(Exception e) {
          System.err.println(e.getMessage());
       }
 	  // Given customer details add the customer in the DB 
@@ -371,6 +391,34 @@ public class DBProject {
    }//end addCustomer
 
    public static void addRoom(DBProject esql){
+      try {
+         // Gather hotelID
+         String hotelID = "";
+         while (!isValidHotel(hotelID)) {
+            System.out.println("Please enter the hotel ID: ");
+            hotelID = in.readLine();
+         }
+
+         // Gather room number
+         String roomNum = "";
+         while (roomNum == "") {
+            System.out.println("Please enter the room number: ");
+            roomNum = in.readLine();
+         }
+         
+         // Gather room type
+         String roomType = "";
+         while (!roomType.equals("Economy") && !roomType.equals("Suite") && !roomType.equals("Deluxe")) {
+            System.out.println("Please indicate room type (Economy/Room/Deluxe): ");
+            roomType = in.readLine();
+         }
+
+         // Execute query
+         String query = String.format("INSERT INTO Room (hotelID, roomNo, roomType) VALUES (%s %s '%s');", hotelID, roomNum, roomType);
+         esql.executeUpdate(query);
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
 	  // Given room details add the room in the DB
       // Your code goes here.
       // ...
@@ -378,6 +426,45 @@ public class DBProject {
    }//end addRoom
 
    public static void addMaintenanceCompany(DBProject esql){
+      try {
+         // Gather company name
+         String cname = "";
+         while (cname == "" || cname.length() >=30) {
+            System.out.println("Please enter the company name: ");
+            cname = in.readLine();
+         }
+         
+         // Gather company address
+         String address = "";
+         while (address == "") {
+            System.out.println("Please enter the company address: ");
+            address = in.readLine();
+         }
+
+         // Gather certification status
+         String isCertified = "";
+         while (!isCertified.equals("yes") && !isCertified.equals("no")) {
+            System.out.println("Is " + cname + " certified (yes/no) ?");
+            isCertified = in.readLine();
+         }
+         // convert to TRUE/FALSE
+         if (isCertified.equals("yes")) {
+            isCertified = "TRUE";
+         }
+         else {
+            isCertified = "FALSE";
+         }
+
+         // Generate new cmpID
+         String cmpID = Integer.toString(esql.generateID("MaintenanceCompany"));
+
+         // Execute query
+         String query = String.format("INSERT INTO MaintenanceCompany (cmpID, name, address, isCertified) VALUES ('%s', '%s', '%s', %s);", cmpID, cname, address, isCertified);
+         // Execute query
+         esql.executeUpdate(query);
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
       // Given maintenance Company details add the maintenance company in the DB
       // ...
       // ...
