@@ -40,14 +40,6 @@ public class DBProject {
    static BufferedReader in = new BufferedReader(
                                 new InputStreamReader(System.in));
 
-   // global query strings for generating new IDs
-   static String getNumCustomers = "SELECT COUNT(*) FROM Customer;";
-   static String getNumCompanies = "SELECT COUNT(*) FROM MaintenanceCompany;";
-   static String getNumRepairs = "SELECT COUNT(*) FROM Repair;";
-   static String getNumBookings = "SELECT COUNT(*) FROM Booking;";
-   static String getNumAssigned = "SELECT COUNT(*) FROM Assigned;";
-   static String getNumRequests = "SELECT COUNT(*) FROM Request;";
-
    /**
     * Creates a new instance of DBProject
     *
@@ -139,26 +131,21 @@ public class DBProject {
    /**
     * Method to gather the number of rows (or ids) in order to generate a new one
     */
-   public int getNewID(String countQuery) throws SQLException {
+   public int generateID(String tableName) throws SQLException {
+      String getRowCount = "SELECT COUNT(*) as rowCount FROM " + tableName + ";";
+      
       // creates a statement object
       Statement stmt = this._connection.createStatement();
 
       // Issues the query instruction
-      ResultSet rs = stmt.executeQuery(countQuery);
+      ResultSet rs = stmt.executeQuery(getRowCount);
 
       int rowCount = 0;
+      // skip header
+      rs.next();
+      // populate rowCount variable with query result
+      rowCount = rs.getInt("rowCount");
 
-      // iterates through the result set to find the return statement with the number of rows
-      boolean outputHeader = true;
-      while (rs.next()){
-	      if(outputHeader) {
-	        outputHeader = false;
-         }
-         else {
-            rowCount = rs.getInt(0);
-            break;
-         }
-      }//end while
       stmt.close ();
 
       // return new ID : row count
