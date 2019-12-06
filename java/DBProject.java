@@ -18,7 +18,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import sun.font.TrueTypeFont;
+// import sun.font.TrueTypeFont;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -140,19 +140,54 @@ public class DBProject {
       // creates a statement object
       Statement stmt = this._connection.createStatement();
 
-      // Issues the query instruction
+      // issue the query instruction
       ResultSet rs = stmt.executeQuery(getRowCount);
 
       int rowCount = 0;
       // skip header
       rs.next();
       // populate rowCount variable with query result
-      rowCount = rs.getInt("rowCount");
+      rowCount = rs.getInt(1);
 
       stmt.close ();
 
       // return new ID : row count
       return rowCount;
+   }
+
+   /**
+    * Method to return customer name from customerID
+    */
+   public String getCustomerID(String fname, String lname) throws SQLException {
+      String query = "SELECT c.customerID FROM Customer c WHERE c.fName = '" + fname + "' AND c.lName = '" + lname + "';";
+
+      // create statement object
+      Statement stmt = this._connection.createStatement();
+
+      // issue query instruction
+      ResultSet rs = stmt.executeQuery(query);
+
+      String customerID = "";
+      // skip header
+      rs.next();
+      // grab query result
+      customerID = rs.getString(1);
+
+      stmt.close();
+
+      return customerID;
+   }
+
+   /**
+    * Method to check that input is only numeric
+    */
+    public static boolean isNumeric(String input) throws Exception {
+      // Check number of inputs and if letter exists in string
+      if (input.matches("[0-9]+") && input.length() > 0) {
+         return true;
+      }
+      // Return false if any character other than 0-9 is found
+      return false;
    }
 
    /**
@@ -185,6 +220,10 @@ public class DBProject {
     * Method to validate the input hotel ID
     */
    public static boolean isValidHotel(String hotelID) throws Exception {
+      if (hotelID == "") {
+         return false;
+      }
+
       Integer hotelNum = Integer.parseInt(hotelID);
       if (hotelNum > 1000 || hotelNum < 0) {
          return false;
@@ -372,7 +411,6 @@ public class DBProject {
          while (!gender.equals("Male") && !gender.equals("Female") && !gender.equals("Other")) {
             System.out.print("\tPlease choose gender (Male, Female, Other): ");
             gender = in.readLine();
-            System.out.println(gender);
          }
 
          // Generate new customerID
@@ -381,6 +419,7 @@ public class DBProject {
          String query = String.format("INSERT INTO Customer (customerID, fName, lName, Address, phNo, DOB, gender) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", newCustomerID, fname, lname, address, phoneNum, customerDOB, gender);
          // Execute query
          esql.executeUpdate(query);
+         System.out.println("Successfully added " + fname + " " + lname + "!\n\n");
       } catch(Exception e) {
          System.err.println(e.getMessage());
       }
@@ -395,27 +434,28 @@ public class DBProject {
          // Gather hotelID
          String hotelID = "";
          while (!isValidHotel(hotelID)) {
-            System.out.println("Please enter the hotel ID: ");
+            System.out.print("Please enter the hotel ID: ");
             hotelID = in.readLine();
          }
 
          // Gather room number
          String roomNum = "";
          while (roomNum == "") {
-            System.out.println("Please enter the room number: ");
+            System.out.print("Please enter the room number: ");
             roomNum = in.readLine();
          }
          
          // Gather room type
          String roomType = "";
          while (!roomType.equals("Economy") && !roomType.equals("Suite") && !roomType.equals("Deluxe")) {
-            System.out.println("Please indicate room type (Economy/Room/Deluxe): ");
+            System.out.print("Please indicate room type (Economy/Suite/Deluxe): ");
             roomType = in.readLine();
          }
 
          // Execute query
-         String query = String.format("INSERT INTO Room (hotelID, roomNo, roomType) VALUES (%s %s '%s');", hotelID, roomNum, roomType);
+         String query = String.format("INSERT INTO Room (hotelID, roomNo, roomType) VALUES ('%s',  '%s',  '%s');", hotelID, roomNum, roomType);
          esql.executeUpdate(query);
+         System.out.println("Successfully added room #" + roomNum + " to hotel #" + hotelID + "!\n\n");
       } catch(Exception e) {
          System.err.println(e.getMessage());
       }
@@ -430,21 +470,21 @@ public class DBProject {
          // Gather company name
          String cname = "";
          while (cname == "" || cname.length() >=30) {
-            System.out.println("Please enter the company name: ");
+            System.out.print("Please enter the company name: ");
             cname = in.readLine();
          }
          
          // Gather company address
          String address = "";
          while (address == "") {
-            System.out.println("Please enter the company address: ");
+            System.out.print("Please enter the company address: ");
             address = in.readLine();
          }
 
          // Gather certification status
          String isCertified = "";
          while (!isCertified.equals("yes") && !isCertified.equals("no")) {
-            System.out.println("Is " + cname + " certified (yes/no) ?");
+            System.out.print("Is " + cname + " certified (yes/no) ?");
             isCertified = in.readLine();
          }
          // convert to TRUE/FALSE
@@ -459,9 +499,9 @@ public class DBProject {
          String cmpID = Integer.toString(esql.generateID("MaintenanceCompany"));
 
          // Execute query
-         String query = String.format("INSERT INTO MaintenanceCompany (cmpID, name, address, isCertified) VALUES ('%s', '%s', '%s', %s);", cmpID, cname, address, isCertified);
-         // Execute query
+         String query = String.format("INSERT INTO MaintenanceCompany (cmpID, name, address, isCertified) VALUES ('%s', '%s', '%s', '%s');", cmpID, cname, address, isCertified);
          esql.executeUpdate(query);
+         System.out.println("Successfully added " + cname + " as a company!\n\n");
       } catch(Exception e) {
          System.err.println(e.getMessage());
       }
@@ -471,6 +511,59 @@ public class DBProject {
    }//end addMaintenanceCompany
 
    public static void addRepair(DBProject esql){
+      try {
+         // Gather hotelID
+         String hotelID = "";
+         while (!isValidHotel(hotelID)) {
+            System.out.print("Please enter the hotel ID: ");
+            hotelID = in.readLine();
+         }
+
+         // Gather room number
+         String roomNum = "";
+         while (roomNum == "") {
+            System.out.print("Please enter the room number: ");
+            roomNum = in.readLine();
+         }
+
+         // Gather Maintenance Company
+         String cmpID = "";
+         while (cmpID == "") {
+            System.out.print("Please enter the maintenance company ID: ");
+            cmpID = in.readLine();
+         }
+
+         // Gather repair date
+         String repairDate = "";
+         while (repairDate == "" || !isValidDate(repairDate)) {
+            System.out.print("Please enter the repair date \'MM/DD/YYYY\': ");
+            repairDate = in.readLine();
+         }
+
+         // Gather repair description
+         String desc = "";
+         while (desc == "") {
+            System.out.print("Please enter the repair description: ");
+            desc = in.readLine();
+         }
+
+         // Gather repair type
+         String rType = "";
+         while (!rType.equals("Small") && !rType.equals("Medium") && !rType.equals("Large")) {
+            System.out.print("Please enter the repair type (Small/Medium/Large): ");
+            rType = in.readLine();
+         }
+
+         // Generate new ID
+         String rID = Integer.toString(esql.generateID("Repair"));
+
+         // Execute query
+         String query = String.format("INSERT INTO Repair (rID, hotelID, roomNo, mCompany, repairDate, description, repairType) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", rID, hotelID, roomNum, cmpID, repairDate, desc, rType);
+         esql.executeUpdate(query);
+         System.out.println("Successfully added repair!\n\n");
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
 	  // Given repair details add repair in the DB
       // Your code goes here.
       // ...
@@ -478,6 +571,62 @@ public class DBProject {
    }//end addRepair
 
    public static void bookRoom(DBProject esql){
+      try {
+         // Query customer ID from customer name
+         String customerID = "";
+         while (customerID == "") {
+            System.out.print("Please enter the customer's first name: ");
+            String fname = in.readLine();
+            System.out.print("Please enter the customer's last name: ");
+            String lname = in.readLine();
+            customerID = esql.getCustomerID(fname, lname);
+         }
+
+         // Gather hotelID
+         String hotelID = "";
+         while (!isValidHotel(hotelID)) {
+            System.out.print("Please enter the hotel ID: ");
+            hotelID = in.readLine();
+         }
+
+         // Gather room number
+         String roomNum = "";
+         while (roomNum == "") {
+            System.out.print("Please enter the room number: ");
+            roomNum = in.readLine();
+         }
+
+         // Gather booking date
+         String bDate = "";
+         while (bDate == "" || !isValidDate(bDate)) {
+            System.out.print("\tEnter booking date \'MM/DD/YYYY\': ");
+            bDate = in.readLine();   
+         }
+
+         // Gather # people
+         String numPeople = "";
+         while (!isNumeric(numPeople)) {
+            System.out.print("Please enter the number of guests: ");
+            numPeople = in.readLine();
+         }
+
+         // Gather price
+         String price = "";
+         while (!isNumeric(price)) {
+            System.out.print("Please enter the price of the booking: ");
+            price = in.readLine();
+         }
+
+         // Generate booking ID
+         String bookingID = Integer.toString(esql.generateID("Booking"));
+
+         // Execute query
+         String query = String.format("INSERT INTO Booking (bID, customer, hotelID, roomNo, bookingDate, noOfPeople, price) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", bookingID, customerID, hotelID, roomNum, bDate, numPeople, price);
+         esql.executeUpdate(query);
+         System.out.println("Successfully created booking in hotel #" + hotelID + " in room #" + roomNum + " on " + bDate + "!\n\n");
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
 	  // Given hotelID, roomNo and customer Name create a booking in the DB 
       // Your code goes here.
       // ...
@@ -485,6 +634,38 @@ public class DBProject {
    }//end bookRoom
 
    public static void assignHouseCleaningToRoom(DBProject esql){
+      try {
+         // Gather staff ID
+         String staffID = "";
+         while (staffID == "") {
+            System.out.print("Please enter the cleaning staff ID: ");
+            staffID = in.readLine();
+         }
+
+         // Gather hotelID
+         String hotelID = "";
+         while (!isValidHotel(hotelID)) {
+            System.out.print("Please enter the hotel ID: ");
+            hotelID = in.readLine();
+         }
+
+         // Gather room number
+         String roomNum = "";
+         while (roomNum == "") {
+            System.out.print("Please enter the room number: ");
+            roomNum = in.readLine();
+         }
+
+         // Generate assigned ID
+         String assignID = Integer.toString(esql.generateID("Assigned"));
+
+         // Execute query
+         String query = String.format("INSERT INTO Assigned (asgID, staffID, hotelID, roomNo) VALUES ('%s', '%s', '%s', '%s');", assignID, staffID, hotelID, roomNum);
+         esql.executeUpdate(query);
+         System.out.println("Successfully assigned employee #" + staffID + " to clean room #" + roomNum + " in hotel #" + hotelID + "!\n\n");
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
 	  // Given Staff SSN, HotelID, roomNo Assign the staff to the room 
       // Your code goes here.
       // ...
@@ -492,7 +673,46 @@ public class DBProject {
    }//end assignHouseCleaningToRoom
    
    public static void repairRequest(DBProject esql){
-	  // Given a hotelID, Staff SSN, roomNo, repairID , date create a repair request in the DB
+      try {
+         // Gather employee SSN
+         String empID = "";
+         while (!isNumeric(empID)) {
+            System.out.print("Please enter the associated employee ID: ");
+            empID = in.readLine();
+         }
+
+         // Gather repairID
+         String repairID = "";
+         while (!isNumeric(repairID)) {
+            System.out.print("Please enter the correlated repair ID: ");
+            repairID = in.readLine();
+         }
+
+         // Gather request date
+         String reqDate = "";
+         while (reqDate == "" || !isValidDate(reqDate)) {
+            System.out.print("Please enter the repair request date: ");
+            reqDate = in.readLine();
+         }
+         
+         // Gather request description
+         String desc = "";
+         while (desc == "") {
+            System.out.print("Please enter a request description: ");
+            desc = in.readLine();
+         }
+
+         // Generate new reqID
+         String reqID = Integer.toString(esql.generateID("Request"));
+
+         // Execute query
+         String query = String.format("INSERT INTO Request (reqID, managerID, repairID, requestDate, description) VALUES ('%s', '%s', '%s', '%s', '%s');", reqID, empID, repairID, reqDate, desc);
+         esql.executeUpdate(query);
+         System.out.println("Successfully " + "!\n\n");
+      } catch(Exception e) {
+         System.err.println(e.getMessage());
+      }
+	  // Given a Staff SSN, repairID, date create a repair request in the DB
       // Your code goes here.
       // ...
       // ...
