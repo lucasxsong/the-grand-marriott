@@ -708,7 +708,7 @@ public class DBProject {
          // Execute query
          String query = String.format("INSERT INTO Request (reqID, managerID, repairID, requestDate, description) VALUES ('%s', '%s', '%s', '%s', '%s');", reqID, empID, repairID, reqDate, desc);
          esql.executeUpdate(query);
-         System.out.println("Successfully " + "!\n\n");
+         System.out.println("Successfully added repair request" + "!\n\n");
       } catch(Exception e) {
          System.err.println(e.getMessage());
       }
