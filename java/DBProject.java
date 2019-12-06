@@ -350,9 +350,10 @@ public class DBProject {
          }
          // Gather customer gender
          String gender = "";
-         while (gender != "Male" && gender != "Female" && gender != "Other") {
+         while (!gender.equals("Male") && !gender.equals("Female") && !gender.equals("Other")) {
             System.out.print("\tPlease choose gender (Male, Female, Other): ");
             gender = in.readLine();
+            System.out.println(gender);
          }
          // Generate new customerID
          String newCustomerID = Integer.toString(esql.getNewID(getNumCustomers));
