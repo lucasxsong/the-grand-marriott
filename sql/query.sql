@@ -91,6 +91,17 @@
 -- WHERE R.hotelID = '5' AND R.roomNo NOT IN (SELECT B.roomNo
 -- FROM Booking B
 -- WHERE R.hotelID = B.hotelID AND B.hotelID = '5');
+<<<<<<< HEAD
+=======
+
+-- --    public static void numberOfBookedRooms(DBProject esql){
+-- -- 	  // Given a hotelID, get the count of rooms booked
+-- --       // Your code goes here.
+-- --       // ...
+-- --       // ...
+-- --    }//end numberOfBookedRooms
+-- hotelID = USER_ENTERED
+>>>>>>> insertQueries
 
 -- -- --    public static void numberOfBookedRooms(DBProject esql){
 -- -- -- 	  // Given a hotelID, get the count of rooms booked
@@ -102,9 +113,15 @@
 
 -- -- TESTED --
 
+<<<<<<< HEAD
 -- SELECT COUNT(*)
 -- FROM Booking B
 -- WHERE B.hotelID = '5';
+=======
+SELECT COUNT(*)
+FROM Booking B
+WHERE B.hotelID = '5';
+>>>>>>> insertQueries
 
 -- -- --    public static void listHotelRoomBookingsForAWeek(DBProject esql){
 -- -- -- 	  // Given a hotelID, date - list all the rooms available for a week(including the input date) 
@@ -116,11 +133,11 @@
 
 -- -- TESTED, need to substitute date and hotel id
 
--- SELECT R.roomNo, R.roomType
--- FROM Room R
--- WHERE R.hotelID = '1' AND R.roomNo NOT IN (SELECT B.roomNo
---     FROM Booking B
---     WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/8/2016' AND B.bookingDate <= '12/10/2016');
+SELECT R.roomNo, R.roomType
+FROM Room R
+WHERE R.hotelID = '1' AND R.roomNo NOT IN (SELECT B.roomNo
+    FROM Booking B
+    WHERE R.hotelID = B.hotelID AND B.bookingDate >= '12/8/2016' AND B.bookingDate <= '12/10/2016');
 
 -- -- --    public static void topKHighestRoomPriceForADateRange(DBProject esql){
 -- -- -- 	  // List Top K Rooms with the highest price for a given date range
@@ -131,11 +148,11 @@
 
 -- -- TESTED, need to substitute date and 'k'
 
--- SELECT B.price, R.roomNo, R.roomType
--- FROM Booking B, Room R
--- WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
--- ORDER BY B.price DESC
--- LIMIT 5;
+SELECT B.price, R.roomNo, R.roomType
+FROM Booking B, Room R
+WHERE B.roomNo = R.roomNo AND B.bookingDate >= '12/8/2000' AND B.bookingDate <= '1/10/2015'
+ORDER BY B.price DESC
+LIMIT 5;
 
 -- -- --    public static void topKHighestPriceBookingsForACustomer(DBProject esql){
 -- -- -- 	  // Given a customer Name, List Top K highest booking price for a customer 
@@ -147,11 +164,11 @@
 
 -- -- TESTED, need to substitute fname, lname and 'k'
 
--- SELECT B.price
--- FROM Booking B, Customer C
--- WHERE 'wbvu' = C.fname AND 'lroe' = C.lname AND B.customer = C.customerID 
--- ORDER BY B.price DESC
--- LIMIT 5;
+SELECT B.price
+FROM Booking B, Customer C
+WHERE 'wbvu' = C.fname AND 'lroe' = C.lname AND B.customer = C.customerID 
+ORDER BY B.price DESC
+LIMIT 5;
 
 -- --    public static void totalCostForCustomer(DBProject esql){
 -- -- 	  // Given a hotelID, customer Name and date range get the total cost incurred by the customer
