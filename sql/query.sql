@@ -234,6 +234,15 @@
 -- Given a Hotel ID , get highest price among all booked rooms for a given date range
 
 -- date range + manager id list requests 
-SELECT R.reqID, Rp.hotelID, Rp.roomNo, R.requestDate, Rp.repairType, R.description
-FROM Request R, Repair Rp
-WHERE Rp.mCompany = '1' AND R.managerID = '2' AND R.repairID = Rp.rID AND R.requestDate >= '1/1/1000' AND R.requestDate <= '1/1/2041';
+-- SELECT R.reqID, Rp.hotelID, Rp.roomNo, R.requestDate, Rp.repairType, R.description
+-- FROM Request R, Repair Rp
+-- WHERE Rp.mCompany = '1' AND R.managerID = '2' AND R.repairID = Rp.rID AND R.requestDate >= '1/1/1000' AND R.requestDate <= '1/1/2041';
+
+
+-- CUSTOMERS 
+
+-- given a customer id, list ll rooms previusly booked by customer
+SELECT B.hotelID, B.roomNo, B.bookingDate, B.noOfPeople, B.price
+FROM Booking B
+WHERE B.customer = '381';
+-- given price and date range, list available rooms in hotels for that date/price range
