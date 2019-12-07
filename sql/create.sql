@@ -227,5 +227,25 @@ COPY Assigned(asgID,
 			  hotelID,
 			  roomNo)
 FROM 'assigned.csv'
-WITH DELIMITER ',';		
+WITH DELIMITER ',';	
+
+CREATE INDEX bkng
+ON Booking
+USING BTREE(bookingDate);
+
+CREATE INDEX cstmr
+ON Customer
+USING BTREE(fName, lName);
+
+CREATE INDEX rpr
+ON Repair
+USING BTREE(mCompany);
+
+CREATE INDEX assnd
+ON Assigned
+USING BTREE(asgID, staffID, hotelID);
+
+CREATE INDEX rm
+ON Room
+USING BTREE(hotelID, roomNo);
 	

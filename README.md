@@ -4,9 +4,9 @@
 ## to do
 - [x] write sql queries for 15 given queries
 
-- [ ] paste queries into java functions
+- [x] paste queries into java functions
 
-- [ ] create gui for java
+- [x] create gui for java
 - [ ] create index for queries?
 
 Folder structure 
