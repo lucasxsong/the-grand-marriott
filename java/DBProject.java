@@ -98,10 +98,11 @@ public class DBProject {
     public void executeUpdate(String sql) throws SQLException {
         // creates a statement object
         Statement stmt = this._connection.createStatement();
-
+        long start = System.currentTimeMillis(); 
         // issues the update instruction
         stmt.executeUpdate(sql);
-
+        long end = System.currentTimeMillis(); 
+        System.out.println("Query processed in" + (end - start) + "ms"); 
         // close the instruction
         stmt.close();
     }// end executeUpdate
@@ -117,7 +118,7 @@ public class DBProject {
     public int executeQuery(String query) throws SQLException {
         // creates a statement object
         Statement stmt = this._connection.createStatement();
-
+        long start = System.currentTimeMillis(); 
         // issues the query instruction
         ResultSet rs = stmt.executeQuery(query);
 
@@ -128,7 +129,7 @@ public class DBProject {
         ResultSetMetaData rsmd = rs.getMetaData();
         int numCol = rsmd.getColumnCount();
         int rowCount = 0;
-
+        // issues the update instruction
         // iterates through the result set and output them to standard out.
         boolean outputHeader = true;
         while (rs.next()) {
@@ -144,6 +145,10 @@ public class DBProject {
             System.out.println();
             ++rowCount;
         } // end while
+        long end = System.currentTimeMillis(); 
+        System.out.println("\n"); 
+        System.out.println("query returned in " + (end - start) + "ms"); 
+
         stmt.close();
         return rowCount;
     }// end executeQuery
