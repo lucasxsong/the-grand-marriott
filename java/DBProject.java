@@ -132,6 +132,8 @@ public class DBProject {
         // issues the update instruction
         // iterates through the result set and output them to standard out.
         boolean outputHeader = true;
+        System.out.println("\n"); 
+
         while (rs.next()) {
             if (outputHeader) {
                 for (int i = 1; i <= numCol; i++) {
